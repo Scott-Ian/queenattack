@@ -6,7 +6,6 @@ namespace Chess
 {
 	public class Program
 	{
-		
 		static void Main()
 		{
 			int queenXPosition;
@@ -27,6 +26,8 @@ namespace Chess
 
 			if (queen.CanQueenMove(opponentXPosition, opponentYPosition))
 			{
+				Console.WriteLine("Opponent x: " + opponentXPosition);
+				Console.WriteLine("Opponent y: " + opponentYPosition);
 				Console.WriteLine("ATTACK!");
 			}
 			else
@@ -37,20 +38,32 @@ namespace Chess
 		
 		private static int GetPosition (string gamePiece, string axis) 
 		{
-			Console.WriteLine("Please enter the " + axis + "position for the " + gamePiece);
-			int position = int.Parse(Console.ReadLine());
-
-			if (position <= 0 || position >= 9)
+			Console.WriteLine("Please enter the " + axis + " axis position for the " + gamePiece);
+			string userInput = Console.ReadLine();
+			int position;
+			bool canBeParsed = int.TryParse(userInput, out position);
+				
+			if (canBeParsed)
 			{
-				Console.WriteLine("Please enter a number betweeen 1 and 8, inclusive.");
+				position = int.Parse(userInput);
+				if (position <= 0 || position >= 9)
+				{
+					Console.WriteLine("Please enter a number betweeen 1 and 8, inclusive.");
+					position = GetPosition(gamePiece, axis);
+					return position;  
+				} 
+				else 
+				{
+					
+					return position;
+				}
+			}
+			else
+			{
+				Console.WriteLine("Numbers Only!");
 				position = GetPosition(gamePiece, axis);
-				return position;  
-			} 
-			else 
-			{
 				return position;
 			}
 		}
-    
 	}
 }

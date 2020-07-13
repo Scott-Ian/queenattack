@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 namespace Chess.Pieces
 {
-
-
   public class Queen
   {
     public Queen(int xPosition, int yPosition)
@@ -26,19 +24,5 @@ namespace Chess.Pieces
 				return false;
 			}
 		}
-    
-
   }
-
-  public class Opponent
-  {
-    public int OpponentPositionX {get; set;}
-    public int OpponentPositionY {get; set;}
-
-    public Opponent(int opponentXPosition, int opponentYPosition)
-    {
-      OpponentPositionX = opponentXPosition;
-      OpponentPositionY = opponentYPosition;
-    }
-}
 }
