@@ -24,9 +24,17 @@ namespace Chess
 			Queen queen = new Queen(queenXPosition, queenYPosition);
 			Console.WriteLine("Queen x: " + queen.PositionX);
 			Console.WriteLine("Queen y: " + queen.PositionY);
-		
-		}
 
+			if (queen.CanQueenMove(opponentXPosition, opponentYPosition))
+			{
+				Console.WriteLine("ATTACK!");
+			}
+			else
+			{
+				Console.WriteLine("Nay");
+			}
+		}
+		
 		private static int GetPosition (string gamePiece, string axis) 
 		{
 			Console.WriteLine("Please enter the " + axis + "position for the " + gamePiece);
@@ -43,11 +51,6 @@ namespace Chess
 				return position;
 			}
 		}
-
+    
 	}
 }
-
-
-// OOOOOOOO
-// OOOOOOOO
-// Grid <pos1, pos2>
